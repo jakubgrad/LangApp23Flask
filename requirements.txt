@@ -2,3 +2,5 @@ Flask
 Gunicorn
 PyPDF2
 Flask-CORS
+Flask-SQLAlchemy
+
