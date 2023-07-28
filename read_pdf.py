@@ -1,5 +1,5 @@
 import PyPDF2
-from fetch_word import give_word2
+from fetch_word import give_word
 
 def find_nth2(haystack, needle, n):
     start = haystack.find(needle)
@@ -55,7 +55,7 @@ def pdftojson2(file): #currently extracts pages and divides into arrays based on
             print(f" unneeded, already found {word} to be f{dict[word]}")
         else:
             try:
-                dict[word] = give_word2(word)
+                dict[word] = give_word(word)
                 print(f" yielded {dict[word]}")
             except:
                 print("didn't work")
