@@ -8,11 +8,15 @@ from flask_sqlalchemy import SQLAlchemy
 import urllib.request,json
 from urllib.parse import quote  
 
+allowed_origins = [
+    'http://localhost:3003',
+    'https://langapp23.onrender.com'
+]
 
 file_path = os.path.abspath(os.getcwd())+"\database.db"
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app, origins=allowed_origins)
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -26,6 +30,7 @@ def upload_file():
     print(f'Hello world and hello {file.filename}')
     text, dict = pdftojson2(file)
     print(dict)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify({"message": "Flask: File uploaded successfully", "text":text,"dict":dict}), 200
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+file_path
