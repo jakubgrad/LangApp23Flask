@@ -33,6 +33,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy()
 db.init_app(app)
 
+# Add OPTIONS route to handle preflight requests
+@app.route('/upload', methods=['OPTIONS'])
+def handle_options_request():
+    response = app.make_default_options_response()
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
 @app.route('/pygetword/<word>', methods=['GET'])
 def pygetword(word):
     #word = request.args.get('word')
