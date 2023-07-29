@@ -31,7 +31,7 @@ def upload_file():
     text, dict = pdftojson2(file)
     print(dict)
     #response.headers.add('Access-Control-Allow-Origin', '*')
-    return jsonify({"message": "Flask: File uploaded successfully", "text":text,"dict":dict}), 200
+    return jsonify({"message": "File uploaded successfully! You can view it in the sidebar on the previous page", "text":text,"dict":dict}), 200
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+file_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

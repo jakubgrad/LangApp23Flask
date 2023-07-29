@@ -49,7 +49,8 @@ def pdftojson2(file): #currently extracts pages and divides into arrays based on
     print(f"data after split and filter: {data}")
     
     dict = {}
-    for word in data:
+    for word2 in data:
+        word = word2.replace(".","").replace(",","").replace(":","").replace(";","").replace("?","").replace("!","")
         print(f"Fetching {word}:",end="")
         if word in dict.keys():
             print(f" unneeded, already found {word} to be f{dict[word]}")
